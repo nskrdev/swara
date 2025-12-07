@@ -1,0 +1,55 @@
+# Swara (स्वर) Configuration File
+
+# Audio Recording Settings
+audio:
+  mode: "toggle"              # push_to_talk | toggle | vad
+  recording_duration: 5       # Fixed recording duration in seconds (for keybinding mode)
+  max_duration: 30            # Maximum recording duration in seconds
+  beep_on_start: true         # Play beep when recording starts
+  beep_on_stop: true          # Play beep when recording stops
+  sample_rate: 16000          # Audio sample rate (Hz)
+  channels: 1                 # Mono audio
+  chunk_size: 1024            # Audio buffer size
+
+# Whisper.cpp Settings
+whisper:
+  model_path: "~/whisper.cpp/models/ggml-base.bin"
+  executable: "~/whisper.cpp/build/bin/whisper-cli"
+  language: "en"              # Language code (en, es, fr, de, etc.)
+
+# Punctuation Restoration
+punctuation:
+  enabled: false              # Enable punctuation restoration (adds 200-500ms latency)
+  model: "oliverguhr/fullstop-punctuation-multilang-large"
+
+# Gemini AI Settings
+gemini:
+  model: "gemini-2.0-flash-exp"
+  temperature: 0.3            # Lower = more consistent, Higher = more creative
+  max_tokens: 2048            # Maximum output length
+  timeout: 10                 # API timeout in seconds
+
+# Context Detection
+context:
+  auto_detect: true           # Automatically detect selected text
+  max_context_length: 5000    # Maximum characters to send to Gemini
+  capture_timeout: 0.5        # Timeout for context capture in seconds
+
+# Text Output Settings
+output:
+  typing_delay: 0.01          # Delay between keystrokes in seconds
+  injection_strategy: "auto"  # auto | native | explicit | paste
+  fallback_to_clipboard: true # Copy to clipboard if injection fails
+  show_preview_notification: true
+
+# Notifications
+notifications:
+  enabled: true
+  duration: 2000              # Notification duration in milliseconds
+  show_preview: true          # Show text preview in success notification
+  preview_length: 50          # Maximum preview length
+
+# Logging
+logging:
+  level: "INFO"               # DEBUG | INFO | WARNING | ERROR
+  file: "logs/swara.log"     # Log file path

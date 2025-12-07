@@ -1,0 +1,27 @@
+# Swara - Voice Dictation Tool
+# Python Requirements
+
+# Audio Recording
+PyAudio>=0.2.13
+
+# Punctuation Restoration
+deepmultilingualpunctuation>=1.0.1
+torch>=2.0.0
+
+# AI Processing
+google-generativeai>=0.3.0
+
+# Configuration & Environment
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Clipboard Management
+pyperclip>=1.8.2
+
+# Utilities
+requests>=2.31.0
+
+# System Dependencies (install via package manager):
+# - ydotool: sudo pacman -S ydotool
+# - wl-clipboard: sudo pacman -S wl-clipboard
+# - whisper.cpp: Will be downloaded and compiled by install script
