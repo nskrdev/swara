@@ -158,8 +158,22 @@ TRANSFORMED TEXT:"""
             return result, "transform"
 
         except Exception as e:
-            logger.error(f"Transformation error: {e}")
-            notifier.error(f"AI processing failed: {e}")
+            error_msg = str(e)
+            logger.error(f"Transformation error: {error_msg}")
+
+            # Check for rate limit error
+            if (
+                "429" in error_msg
+                or "RESOURCE_EXHAUSTED" in error_msg
+                or "quota" in error_msg.lower()
+            ):
+                notifier.error(
+                    "API rate limit reached. Using original text.", critical=False
+                )
+                logger.warning("Rate limit hit - using fallback")
+            else:
+                notifier.error(f"AI processing failed: {error_msg}")
+
             # Fallback: return original text
             return text, "error"
 
@@ -191,8 +205,22 @@ GENERATED TEXT:"""
             return result, "generate"
 
         except Exception as e:
-            logger.error(f"Generation error: {e}")
-            notifier.error(f"AI processing failed: {e}")
+            error_msg = str(e)
+            logger.error(f"Generation error: {error_msg}")
+
+            # Check for rate limit error
+            if (
+                "429" in error_msg
+                or "RESOURCE_EXHAUSTED" in error_msg
+                or "quota" in error_msg.lower()
+            ):
+                notifier.error(
+                    "API rate limit reached. Try again in a moment.", critical=False
+                )
+                logger.warning("Rate limit hit - no generation")
+            else:
+                notifier.error(f"AI processing failed: {error_msg}")
+
             return "", "error"
 
     def _execute_command(self, command: str) -> Tuple[str, str]:
@@ -234,8 +262,23 @@ CORRECTED TEXT:"""
             return result, "dictation"
 
         except Exception as e:
-            logger.error(f"Dictation cleanup error: {e}")
-            notifier.error(f"AI processing failed: {e}")
+            error_msg = str(e)
+            logger.error(f"Dictation cleanup error: {error_msg}")
+
+            # Check for rate limit error
+            if (
+                "429" in error_msg
+                or "RESOURCE_EXHAUSTED" in error_msg
+                or "quota" in error_msg.lower()
+            ):
+                notifier.error(
+                    "API rate limit reached. Using raw transcription.", critical=False
+                )
+                logger.warning("Rate limit hit - using raw transcription")
+            else:
+                notifier.error(f"AI processing failed: {error_msg}")
+
+            # Fallback: return original transcription
             return text, "error"
 
 

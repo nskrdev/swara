@@ -23,8 +23,13 @@ punctuation:
   model: "oliverguhr/fullstop-punctuation-multilang-large"
 
 # Gemini AI Settings
+# Available models (from your API key):
+#   - gemini-2.5-flash: Latest stable mid-size model (recommended)
+#   - gemini-2.5-pro: Highest quality, slower
+#   - gemini-2.0-flash: Fast and versatile
+#   - gemini-flash-latest: Auto-updates to latest Flash
 gemini:
-  model: "gemini-2.0-flash-exp"
+  model: "gemini-2.5-flash"
   temperature: 0.3            # Lower = more consistent, Higher = more creative
   max_tokens: 2048            # Maximum output length
   timeout: 10                 # API timeout in seconds
