@@ -1,6 +1,6 @@
-# Swara (स्वर) - Intelligent Voice Dictation for Linux
+# Swara (స్వర) - Intelligent Voice Dictation for Linux
 
-**Swara** (स्वर - "voice/sound/tone" in Sanskrit) is an intelligent voice dictation tool for Linux with context awareness and AI processing.
+**Swara** (స్వర - "voice/sound/tone" in Telugu) is an intelligent voice dictation tool for Linux with context awareness and AI processing.
 
 ## Features
 
