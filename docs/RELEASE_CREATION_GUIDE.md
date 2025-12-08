@@ -2,7 +2,32 @@
 
 This document provides instructions for creating the GitHub release v1.1.0 for the Swara project.
 
-## Option 1: Using the Automated Script (Recommended)
+## Option 1: Using GitHub Actions (Recommended - No Authentication Required)
+
+The repository includes a GitHub Action workflow that can create the release automatically.
+
+### Steps:
+
+1. Navigate to https://github.com/nskrdev/swara/actions
+2. Click on "Create Release v1.1.0" workflow in the left sidebar
+3. Click "Run workflow" button
+4. In the confirmation input, type: `create`
+5. Click "Run workflow" to start the process
+
+The workflow will:
+- Verify the tag v1.1.0 exists
+- Create the release with comprehensive notes
+- Target the main branch
+- Generate additional release notes automatically
+- Mark it as the latest release
+
+### Verification:
+
+After the workflow completes successfully:
+- Visit https://github.com/nskrdev/swara/releases/tag/v1.1.0
+- Verify the release is created with all details
+
+## Option 2: Using the Automated Script
 
 If you have the GitHub CLI (`gh`) installed and authenticated:
 
@@ -18,7 +43,7 @@ The script will automatically:
 - Generate release notes
 - Mark it as the latest release
 
-## Option 2: Using GitHub CLI Manually
+## Option 3: Using GitHub CLI Manually
 
 ```bash
 gh release create v1.1.0 \
@@ -30,7 +55,7 @@ gh release create v1.1.0 \
     --latest
 ```
 
-## Option 3: Using GitHub Web UI
+## Option 4: Using GitHub Web UI
 
 1. Navigate to https://github.com/nskrdev/swara/releases
 2. Click "Draft a new release"
@@ -103,8 +128,10 @@ Ensure you have write access to the repository. You must be a collaborator or ow
 
 ## Reference Files
 
+- `.github/workflows/create-release-v1.1.0.yml` - GitHub Action workflow for automated release creation
 - `RELEASE_NOTES_v1.1.0.md` - Complete release notes
-- `scripts/create-release-v1.1.0.sh` - Automated release creation script
+- `scripts/create-release-v1.1.0.sh` - Automated release creation script (requires gh CLI)
+- `docs/RELEASE_CREATION_GUIDE.md` - This guide
 - `README.md` - Project documentation
 - `LICENSE` - MIT License text
 
