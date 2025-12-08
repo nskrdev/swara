@@ -128,7 +128,9 @@ gh release create "$TAG" \
     --generate-notes \
     --latest
 
-if [ $? -eq 0 ]; then
+RELEASE_EXIT_CODE=$?
+
+if [ $RELEASE_EXIT_CODE -eq 0 ]; then
     echo ""
     echo -e "${GREEN}✓ Release $TAG created successfully!${NC}"
     echo ""

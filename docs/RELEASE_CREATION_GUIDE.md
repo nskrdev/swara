@@ -32,7 +32,7 @@ After the workflow completes successfully:
 If you have the GitHub CLI (`gh`) installed and authenticated:
 
 ```bash
-cd /home/runner/work/swara/swara
+cd path/to/swara
 bash scripts/create-release-v1.1.0.sh
 ```
 
